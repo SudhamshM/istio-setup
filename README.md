@@ -12,3 +12,7 @@ Basic istio setup for local Kubernetes cluster
    - Use a sample from Google [found here.](https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/kubernetes-manifests.yaml)
    - Run `kubectl apply -f kubernetes-manifest.yaml` to deploy the app
    - Verify pods, services, replica set and other objects are created
+4. Configure namespace and label to allow proxy injection by istio
+   - Run `kubectl label ns default istio-injection=enabled`
+   - Delete current manifest application and re-run the apply command
+   - Verify 2 containers are there for each pod (extra container is for envoy proxy)
